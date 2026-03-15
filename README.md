@@ -6,10 +6,16 @@ Este proyecto contiene una colección de scripts básicos en Python para aprende
 
 - **intro.py**: Un script de saludo que calcula la edad del usuario en el año 2030.
 - **contador_notas.py**: Calcula el promedio de 5 notas ingresadas por el usuario.
-- **inventario.py**: Sistema simple de inventario para agregar y ver productos.
+- **inventario.py**: Sistema simple de inventario para agregar y ver productos, refactorizado con funciones para mejor organización del código.
 - **barman.py**: Simulador de barman virtual que sirve bebidas con verificación de edad.
 - **bifurcacion.py**: Sistema de login básico con menú de opciones.
 - **pybot.py**: Asistente virtual que saluda y calcula la edad del usuario.
+- **guardar_archivo.py**: Script para escribir y reescribir archivos de texto, demostrando el uso de modos de apertura de archivos ('w' para escribir, 'a' para agregar).
+
+## Estructura de Archivos
+
+- **archivo/**: Carpeta que contiene archivos de ejemplo para las operaciones de archivo.
+  - **nota.txt**: Archivo de texto utilizado por guardar_archivo.py para demostrar escritura y edición.
 
 ## Requisitos
 
