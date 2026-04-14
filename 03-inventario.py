@@ -14,11 +14,12 @@ limpiar_consola()
 stock=[]
 continuar=True
 opcion=""
+
 def agregar_inventario():
     producto=input("Agrega el nombre del producto: ")
     if len(producto)>0:
         stock.append(producto)
-        print("Producto agregado al inventario!🎉")
+        return "Producto agregado al inventario!🎉"
 
 def ver_inventario():
     if len(stock)>0: 
@@ -40,10 +41,13 @@ while continuar:
     mostrar_menu()
     opcion=input("Elige una opción: ")
     if opcion=="1":
-       agregar_inventario()
+       limpiar_consola()
+       print(agregar_inventario())
     elif opcion=="2":
+        limpiar_consola()
         ver_inventario()
     elif opcion=="3":
+        limpiar_consola()
         print("Hasta luego!👋")
         continuar=False
     else:

@@ -9,6 +9,16 @@
 # with open("archivo/nota.txt","a") as archivo:
 #     archivo.write("Esto es una nota nueva\n")
 
+password="contraseña123"
+
+password_user=input("Ingrese la contraseña de acceso: ")
+
+if password==password_user:
+    print("Acceso aprobado✅")
+else: 
+    print("Acceso denegado❌")
+
+
 from datetime import datetime
 
 fecha= datetime.now().strftime("%d-%m-%Y %H:%M")
@@ -18,7 +28,7 @@ def escribir_archivo():
     texto=input("Escribe una párrafo nuevo: ")
     with open("archivo/nota.txt","a") as archivo:
         archivo.write(f"{fecha} - {texto}\n")
-        leerNota()
+    leerNota()
      
 def leerNota():
     with open("archivo/nota.txt", "r") as archivo:
