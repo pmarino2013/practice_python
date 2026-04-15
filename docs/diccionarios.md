@@ -100,3 +100,83 @@ while True:
 ### 🛠️ Reto para el alumno:
 
 Modificar la agenda para que, al mostrar los contactos, si el email termina en `@gmail.com`, le ponga una etiqueta que diga `[CUENTA GOOGLE]`. (Uso de `if` + diccionarios).
+
+---
+
+Para trabajar con la librería `json` en Python, la documentación oficial se centra en **cuatro métodos principales**. La clave para no confundirse es entender si estás trabajando con un **String** (texto en memoria) o con un **Archivo** (físico en el disco duro).
+
+Aquí tienes el desglose técnico:
+
+---
+
+### 1. Los 4 Métodos Fundamentales
+
+Se dividen en dos parejas según su función: **Serializar** (convertir de Python a JSON) y **Deserializar** (convertir de JSON a Python).
+
+#### A. Para manejar Archivos (Sin la "s")
+
+Estos métodos se usan junto con la instrucción `with open()`.
+
+- **`json.dump(objeto, archivo)`**: Toma un diccionario/lista de Python y lo **vuelca** directamente dentro de un archivo `.json`.
+- **`json.load(archivo)`**: **Carga** el contenido de un archivo `.json` y lo transforma automáticamente en un objeto de Python (diccionario o lista).
+
+#### B. Para manejar Strings (Con la "s" de _String_)
+
+Se usan cuando el JSON ya es una cadena de texto, por ejemplo, lo que recibes de una API de internet.
+
+- **`json.dumps(objeto)`**: Convierte un objeto Python en un **String** con formato JSON. Útil para imprimirlo o enviarlo por red.
+- **`json.loads(string_json)`**: Toma un texto que tiene formato JSON y lo **carga** como un objeto Python.
+
+---
+
+### 2. Ejemplos Prácticos
+
+#### Guardar y Leer un Archivo (`dump` / `load`)
+
+```python
+import json
+
+data = {"curso": "Python Pro", "alumnos": 25}
+
+# GUARDAR: Usamos dump
+with open("data.json", "w") as f:
+    json.dump(data, f, indent=4) # indent=4 lo hace legible para humanos
+
+# LEER: Usamos load
+with open("data.json", "r") as f:
+    datos_recuperados = json.load(f)
+    print(datos_recuperados["curso"])
+```
+
+#### Convertir a Texto (`dumps` / `loads`)
+
+```python
+import json
+
+# De Diccionario a Texto (Útil para depuración)
+usuario = {"id": 1, "nombre": "Ana"}
+texto_json = json.dumps(usuario)
+print(type(texto_json)) # <class 'str'>
+
+# De Texto a Diccionario
+json_recibido = '{"status": "OK", "codigo": 200}'
+diccionario = json.loads(json_recibido)
+print(diccionario["status"]) # OK
+```
+
+---
+
+### 3. Parámetros Importantes de la Documentación
+
+Cuando uses estos métodos, hay tres argumentos que te harán la vida más fácil:
+
+1.  **`indent`**: (Solo en `dump/dumps`) Define cuántos espacios de sangría tendrá el archivo. Sin esto, el JSON se guarda en una sola línea gigante.
+2.  **`sort_keys`**: Si lo pones en `True`, ordena las claves del diccionario alfabéticamente.
+3.  **`ensure_ascii`**: Si trabajas con caracteres especiales (ñ, tildes), ponlo en `False` para que se guarden correctamente y no como códigos extraños (ej: `\u00f1`).
+
+---
+
+### 💡 Resumen para el curso (Clase 5):
+
+- **Si tiene "s" (`loads`, `dumps`):** Trabaja con **S**trings.
+- **Si NO tiene "s" (`load`, `dump`):** Trabaja con archivos (ficheros).
