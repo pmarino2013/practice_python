@@ -38,8 +38,8 @@ while True:
         contactos.append(nuevo)
 
         #agregar al json
-        with open("archivo/agenda.json","w") as f:
-            json.dump(contactos,f,indent=4)
+        with open("archivo/agenda.json","w",encoding='utf-8') as f:
+            json.dump(contactos,f,ensure_ascii=False,indent=4)
         print("✅ Guardado en la nube local")
 
     elif opcion=="2":

@@ -5,11 +5,6 @@ from bs4 import BeautifulSoup
 
 url="https://es.wikipedia.org/wiki/Inteligencia_artificial"
 
-# 🕵️ ¿Qué es el User-Agent?
-# Cada vez que entras a una web, tu navegador envía una "credencial" que dice algo como: "Hola, soy Google Chrome ejecutándose en Windows 11".
-
-# Por defecto, la librería requests envía una credencial que dice: "python-requests/2.31.0". Los servidores ven esto y dicen: "¡Un robot! ¡Bloqueado!".
-
 
 cabeceras = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
@@ -33,6 +28,7 @@ if lista:
     datos_finales = []
     for item in elementos:
          datos_finales.append(item.text) 
+
 
     print(f"--- {titulo} ---")
     for dato in datos_finales:

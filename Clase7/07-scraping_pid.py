@@ -16,36 +16,36 @@ datos=sopa.find('tbody', id='mwNg')
 filas=datos.find_all('tr')
 
 for fila in filas:
-    datitos = []  # Resetear la lista para cada fila
+    info = []  # Resetear la lista para cada fila
     celdas = fila.find_all('td')  # Buscar celdas EN ESTA FILA
     
     for celda in celdas:
-        unit = celda.find_all('span')
+        lista_span = celda.find_all('span')
         valor = ""
-        if len(unit) > 0:
-            if len(unit)<3:
-                valor = unit[1].text
+        if len(lista_span) > 0:
+            if len(lista_span)<3:
+                valor = lista_span[1].text
             else:
-                valor = unit[0].text
+                valor = lista_span[0].text
         else:
             valor = celda.text
         
-        datitos.append(valor)
+        info.append(valor)
     
     # Crear diccionario si hay datos
-    if len(datitos) >= 3:
-        prov = {
-            "pos": datitos[0],
-            "pais": datitos[1],
-            "pib": int(re.sub(r'\D', '', datitos[2]))  # Elimina todo lo que no sea dígito
+    if len(info) >= 3:
+        datos_pais = {
+            "pos": info[0],
+            "pais": info[1],
+            "pib": int(re.sub(r'\D', '', info[2]))  # Elimina todo lo que no sea dígito
         }
-        if prov["pos"]!="":
-            pib.append(prov)
+        if datos_pais["pos"]!="":
+            pib.append(datos_pais)
      
 
 
 df = pd.DataFrame(pib)
-
+# print(df)
 # print(df.info())
 promedio_pib = df['pib'].mean()
 menor_pib = df[df['pib'] <2000]

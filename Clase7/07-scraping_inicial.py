@@ -18,6 +18,6 @@ respuesta = requests.get(url, headers=cabeceras)
 sopa = BeautifulSoup(respuesta.text, 'html.parser')
 
 # 4. Buscamos el título principal (etiqueta <h1>)
-titulo = sopa.find('h1').text
+titulo = sopa.find('h1')
 
 print(f"El título de la página es: {titulo}")
